@@ -1,6 +1,98 @@
 <!DOCTYPE html>
 <html>
 
+
+<style>
+.container {
+	width: 100vw;
+  height: 100vh;
+  	position:relative;
+  	background:rgb(61,61,61);
+}
+.container-row {
+width:100%;
+height: 10%;
+
+}
+.niz {
+	width:100%;
+	position:absolute; /* добавили */
+	bottom:0; /* добавили */
+	background:rgb(61,61,61);
+}
+.table {
+	width:100%;
+	border:1px;
+}
+
+.texta {
+background:rgb(61,61,61);
+}
+
+a.button28 {
+	witdh:105px;
+  display: inline-block;
+  font-size: 90%;
+  font-weight: 700;
+  color: rgb(209,209,217);
+  text-decoration: none;
+  text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+  padding: .5em 1em;
+  outline: none;
+  border-radius: 3px;
+  background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+  box-shadow:
+   0 1px rgba(255,255,255,.2) inset,
+   0 3px 5px rgba(0,1,6,.5),
+   0 0 1px 1px rgba(0,1,6,.2);
+  transition: .2s ease-in-out;
+}
+a.button28:hover:not(:active) {
+  background: linear-gradient(rgb(126,126,134), rgb(70,71,76)) rgb(126,126,134);
+}
+a.button28:active {
+  top: 1px;
+  background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+  box-shadow:
+   0 0 1px rgba(0,0,0,.5) inset,
+   0 2px 3px rgba(0,0,0,.5) inset,
+   0 1px 1px rgba(255,255,255,.1);
+}
+
+
+a.button29 {
+	witdh:105px;
+  display: inline-block;
+  font-size: 90%;
+  font-weight: 700;
+  color: rgb(255,79,0);
+  text-decoration: none;
+  text-shadow: 0 -1px 2px rgba(0,0,0,.2);
+  padding: .5em 1em;
+  outline: none;
+  border-radius: 3px;
+  background: linear-gradient(rgb(110,112,120), rgb(81,81,86)) rgb(110,112,120);
+  box-shadow:
+   0 1px rgba(255,255,255,.2) inset,
+   0 3px 5px rgba(0,1,6,.5),
+   0 0 1px 1px rgba(0,1,6,.2);
+  transition: .2s ease-in-out;
+}
+a.button29:hover:not(:active) {
+  background: linear-gradient(rgb(126,126,134), rgb(70,71,76)) rgb(126,126,134);
+}
+a.button29:active {
+  top: 1px;
+  background: linear-gradient(rgb(76,77,82), rgb(56,57,62)) rgb(76,77,82);
+  box-shadow:
+   0 0 1px rgba(0,0,0,.5) inset,
+   0 2px 3px rgba(0,0,0,.5) inset,
+   0 1px 1px rgba(255,255,255,.1);
+}
+
+
+</style>
+
 <head>
 	<meta name="viewport" content="width=device-width,user-scalable=no"/>
 	<link rel="stylesheet"  href="./lib/tau/mobile/theme/default/tau.css">
@@ -11,29 +103,62 @@
 <body>
 	<!-- Start of first page: #one -->
 	<div class="ui-page" id="one">
-		<div class="ui-header">
-			<h1>Multi-page application</h1>
-		</div><!-- /header -->
 
 		<div class="ui-content">
-			<h2>One</h2>
-			<p>
-				This is a multi-page boilerplate template that you can copy to build
-				your first Tizen Web UI Framework page. This template contains multiple "page"
-				containers inside.
-			</p>
-			<p>
-				You link to internal pages by referring to the ID of the page you
-				want to show. For example, to <a href="#two">link</a> to the page
-				with an ID of "two", my link would have a
-				<code>href="#two"</code>
-				in the code.
-			</p>
-		<ul class="ui-listview">
-			 <li class="ui-group-index">Show internal pages:</li>
-				 <li class="ui-li-anchor"><a href="#popup" data-rel="popup" data-position-to="window">Show page "popup"</a></li>
-				 <li class="ui-li-anchor"><a href="#two">Show page "two"</a></li>
-			</ul>
+			<div class="container">
+			
+			<textarea id="workarea" cols="30" rows="8" disabled=1>0</textarea>
+			<br>
+			<table class="table">
+				<tr>
+					<td><a href="#" class="button29" onclick="cleararea()">C</a></td>
+					<td><a href="#" class="button29" onclick="result()">=</a></td>
+					<td><a href="#" class="button29">M</a></td>
+					<td><a href="#" class="button29">&lArr;</a></td>
+					<td><a href="#" class="button29">&nbsp;X&nbsp;</a></td>
+					<td><a href="#" class="button29">&nbsp;N&nbsp;</a></td>
+				</tr>
+				<tr>
+					<td><a href="#" class="button28" onclick="addnum(7,'num')">7</a></td>
+					<td><a href="#" class="button28" onclick="addnum(8,'num')">8</a></td>
+					<td><a href="#" class="button28" onclick="addnum(9,'num')">9&nbsp;</a></td>
+					<td><a href="#" class="button29" onclick="addnum('+','com')">+&nbsp;</a></td>
+					<td><a href="#" class="button29" onclick="addnum('-','com')">&nbsp;-&nbsp;&nbsp;</a></td>
+					<td><a href="#" class="button29" onclick="addnum('*','com')">&nbsp;*&nbsp;</a></td>
+				</tr>
+				<tr>
+					<td><a href="#" class="button28" onclick="addnum(4,'num')">4</a></td>
+					<td><a href="#" class="button28" onclick="addnum(5,'num')">5</a></td>
+					<td><a href="#" class="button28" onclick="addnum(6,'num')">6&nbsp;</a></td>
+					<td><a href="#" class="button29" onclick="addnum('÷','com')">÷&nbsp;</a></td>
+					<td><a href="#" class="button29">|&nbsp;&nbsp;|</a></td>
+					<td><a href="#" class="button29">^&nbsp;&nbsp;</a></td>
+				</tr>
+				<tr>
+					<td><a href="#" class="button28" onclick="addnum(1,'num')">1</a></td>
+					<td><a href="#" class="button28" onclick="addnum(2,'num')">2</a></td>
+					<td><a href="#" class="button28" onclick="addnum(3,'num')">3&nbsp;</a></td>
+					<td><a href="#" class="button29">√&nbsp;</a></td>
+					<td><a href="#" class="button29" onclick="addnum('%','com')">%</a></td>
+					<td><a href="#" class="button29" onclick="addnum('!','com')">&nbsp;!&nbsp;</a></td>
+				</tr>
+				<tr>
+					<td><a href="#" class="button28" onclick="addnum(0,'num')">0</a></td>
+					<td><a href="#" class="button28" onclick="addnum('.','num')">.&nbsp;</a></td>
+					<td><a href="#" class="button28" onclick="skobka()">(&nbsp;)</a></td>
+					<td><a href="#" class="button29">lg</a></td>
+					<td><a href="#" class="button29">sn</a></td>
+					<td><a href="#" class="button29">cs</a></td>
+				</tr>
+			</table>
+
+
+			
+				<div class="niz"><center><a href="#popup" data-rel="popup" data-position-to="window" class="button28">User's functions</a></center>
+				 </div>
+			</div>
+		
+	
 			<div id="popup" class="ui-popup center_title_1btn">
 				<div class="ui-popup-header">Popup title</div>
 				<div class="ui-popup-content popup-content-padding">Pop-up dialog box, a child window that blocks user interact to the parent windows</div>
