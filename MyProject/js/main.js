@@ -63,13 +63,13 @@ function result() {
 	var a=0, b=0;
 	var strochka='';
 	//while (globalflag < 1){
-	for (var i = 0; i < code.length; i++){
+	for (var i = 0; i < code.length; i++){console.log('code.charAt('+i+')='+code.charAt(i));
 		if (flag===1) {strochka=strochka+code.charAt(i);}
 		if (code.charAt(i)===')'){b=i; flag=2;}
-		if (code.charAt(i)==='('){a=i; flag=1;}
+		if ((code.charAt(i)==='(')&&(flag===0)){a=i; flag=1;}
 		if (flag===2){flag=0; code=code.replace(('('+strochka), resultskobki(strochka,a,b)); 
 		//console.log('AAAAAAAAAAA! '+code+ ' '+('('+strochka)+ ' c '+ resultskobki(strochka,a,b)+' result '+ code.replace(('('+strochka), resultskobki(strochka,a,b)));
-		
+		i=i-strochka.length;
 		a=0; b=0; strochka=''; }
 	//}
 	}
