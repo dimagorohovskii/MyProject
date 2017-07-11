@@ -24,6 +24,8 @@ function isNumber(n) {
 	}
 
 function addnum(x,typing) {
+	//console.log('TESTING: umnogenie(35+74*10-9*2*2)): ');
+	//umnogenie('35+74*10-9*2*2)');
 	switch(typing) {
 	case 'com':
 		code=code+'|'+x;
@@ -98,9 +100,58 @@ function result() {
 	if (helper===resultat) {flag=1} else {helper=resultat;};
 	console.log('RESULT = ' + resultat);
 	}
+	resultat=resultskobki ((resultat+')'), 0, resultat.length);
 	document.getElementById('workarea').value=resultat;
 }
 
+function umnogenie (stroka) {
+	var flaga, flagb=0,result='', x, y,v,a,b;
+	while (flagb===0){
+		flagb=1;
+	for (var i = 0; i < stroka.length; i++) {
+		flaga=0;
+		a='',b='';
+		switch (stroka.charAt(i)) {
+		case '*':
+			y=i;v=i;
+			while (flaga===0){v=v-1; if ((stroka.charAt(v)==='.')||(isNumber(stroka.charAt(v)))) {x=v}else{flaga=1};}
+			for (var j = v+1; j < i; j++){
+				a=a+stroka.charAt(j);
+			}
+			flaga=0; y=i;
+			while (flaga===0){y=y+1; console.log(stroka.charAt(y)); if ((stroka.charAt(y)==='.')||(isNumber(stroka.charAt(y)))) {x=y}else{flaga=1};}
+			for (var j = i+1; j < y; j++){
+				b=b+stroka.charAt(j);
+			}
+			console.log('[Умножение]: A='+a+', B='+b+', before:'+stroka.charAt(v)+', after:'+stroka.charAt(y));
+			x=parseFloat(a)*parseFloat(b);
+			//l=a+'*'+b;
+			stroka=stroka.replace((a+'*'+b),x);
+			flagb=0;
+			break;	
+		case '/':
+			y=i;v=i;
+			while (flaga===0){v=v-1; if ((stroka.charAt(v)==='.')||(isNumber(stroka.charAt(v)))) {x=v}else{flaga=1};}
+			for (var j = v+1; j < i; j++){
+				a=a+stroka.charAt(j);
+			}
+			flaga=0; y=i;
+			while (flaga===0){y=y+1; console.log(stroka.charAt(y)); if ((stroka.charAt(y)==='.')||(isNumber(stroka.charAt(y)))) {x=y}else{flaga=1};}
+			for (var j = i+1; j < y; j++){
+				b=b+stroka.charAt(j);
+			}
+			console.log('[Деление]: A='+a+', B='+b+', before:'+stroka.charAt(v)+', after:'+stroka.charAt(y));
+			if (b==='0') {alert('На ноль делить нельзя, дурень!')} else {x=parseFloat(a)/parseFloat(b);}
+			//l=a+'*'+b;
+			stroka=stroka.replace((a+'/'+b),x);
+			flagb=0;
+			break;	
+		}//+a*b+c
+	}
+	}
+	console.log('[Умножение]: RESULT = '+stroka);
+	return stroka;
+}
 
 
 function resultskobki (skobki, startpos, stoppos) {
@@ -109,6 +160,9 @@ function resultskobki (skobki, startpos, stoppos) {
 	var skobkitext=skobki;
 	var i=0;
 	var command='+';
+	//alert(skobkitext);
+	skobkitext=umnogenie(skobkitext);
+	//alert(skobkitext);
 	while (isNumber(skobkitext.charAt(i))) {
 		resultat2=parseFloat(resultat2+skobkitext.charAt(i));
 		console.log('[Скобочный цикл]: result='+resultat2);
