@@ -46,8 +46,10 @@ function cleararea() {
 
 function skobka() {
 	var z;
-	z = (isNumber(document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1))) ? ')' : '(';
-	if (document.getElementById('workarea').value==='0') document.getElementById('workarea').value='';
+	if (document.getElementById('workarea').value==='0') {document.getElementById('workarea').value=''; z='(';}else{
+		if (document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1)===')'){z=')'}else
+			{z = (isNumber(document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1))) ? ')' : '(';}
+	}
 	code=code+'|'+z;
 	document.getElementById('workarea').value=document.getElementById('workarea').value+z;
 	console.log('CODE = ' + code);
@@ -60,8 +62,8 @@ function findmeskobki(start,stop,stroka) {
 	var level=0;
 	var helper='';
 	for (var i = start; i < stop+1; i++){console.log('string: '+stroka+', code.charAt('+i+') = '+stroka.charAt(i)+', skob level = '+level+', current string = '+strochka);
-	if ((flag===2)&&(level===0)){flag=0; console.log('STRING HAS BEEN FOUND: '+strochka); i=i-strochka.length; helper=findmeskobki(0,strochka.length,strochka); i=i+helper.length; console.log('Replasing in ['+stroka+']... ['+('('+strochka)+'] => ['+resultskobki(strochka,a,b)+']'); stroka=stroka.replace(('('+strochka), resultskobki(strochka,a,b)); console.log('Result replasing: '+stroka); a=0; b=0; strochka=''; }
-	if (level>0) {strochka=strochka+stroka.charAt(i);}
+	if ((flag===2)&&(level===0)){flag=0; console.log('STRING HAS BEEN FOUND: '+strochka); i=i-strochka.length; helper=findmeskobki(0,strochka.length,strochka); console.log('VIZOV RESULTATA: STROCHKA='+strochka+', A='+a+', B='+b); q=resultskobki(helper,a,b);  console.log('Replasing in ['+stroka+']... ['+('('+strochka)+'] => ['+q+']'); stroka=stroka.replace(('('+strochka), q); console.log('Result replasing: '+stroka); a=0; b=0; strochka=''; }
+	if (level>0) {strochka=strochka+stroka.charAt(i);}////////////////////////////////////
 	if (stroka.charAt(i)===')'){b=i; flag=2; level=level-1;}
 	if (stroka.charAt(i)==='('){a=i; flag=1; level=level+1;}
 	}
@@ -78,6 +80,7 @@ function result() {
 	var globalflag=0;
 	var a=0, b=0;
 	var strochka='';
+	var helper='';
 	
 	//while (globalflag < 1){
 	//for (var i = 0; i < code.length; i++){console.log('code.charAt('+i+')='+code.charAt(i));
@@ -90,8 +93,12 @@ function result() {
 	//	a=0; b=0; strochka=''; }
 	//}
 	//}
+	while (flag===0){
 	resultat=findmeskobki(0,code.length,code);
+	if (helper===resultat) {flag=1} else {helper=resultat;};
 	console.log('RESULT = ' + resultat);
+	}
+	document.getElementById('workarea').value=resultat;
 }
 
 
@@ -109,7 +116,7 @@ function resultskobki (skobki, startpos, stoppos) {
 	}
 	console.log('resultat2='+resultat2);
 	for (var k = i; k < skobkitext.length; k++) {
-		console.log('[Результивный цикл]: skobkitext.charAt('+k+')='+skobkitext.charAt(k));
+		console.log('[Результивный цикл]: skobkitext.charAt('+k+')='+skobkitext.charAt(k));//////////////////////////
 		if ((isNumber(skobkitext.charAt(k)))||(skobkitext.charAt(k)==='.')) {
 			perem=perem+skobkitext.charAt(k)
 			console.log('[Результивный цикл]: perem='+perem);
