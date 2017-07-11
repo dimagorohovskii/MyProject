@@ -53,6 +53,22 @@ function skobka() {
 	console.log('CODE = ' + code);
 }
 
+function findmeskobki(start,stop,stroka) {
+	var a=0, b=0;
+	var flag=0;
+	var strochka='';
+	var level=0;
+	var helper='';
+	for (var i = start; i < stop+1; i++){console.log('string: '+stroka+', code.charAt('+i+') = '+stroka.charAt(i)+', skob level = '+level+', current string = '+strochka);
+	if ((flag===2)&&(level===0)){flag=0; console.log('STRING HAS BEEN FOUND: '+strochka); i=i-strochka.length; helper=findmeskobki(0,strochka.length,strochka); i=i+helper.length; console.log('Replasing in ['+stroka+']... ['+('('+strochka)+'] => ['+resultskobki(strochka,a,b)+']'); stroka=stroka.replace(('('+strochka), resultskobki(strochka,a,b)); console.log('Result replasing: '+stroka); a=0; b=0; strochka=''; }
+	if (level>0) {strochka=strochka+stroka.charAt(i);}
+	if (stroka.charAt(i)===')'){b=i; flag=2; level=level-1;}
+	if (stroka.charAt(i)==='('){a=i; flag=1; level=level+1;}
+	}
+	console.log('GET STRING: '+stroka);
+	return stroka;
+}
+
 function result() {
 		console.log(document.getElementById('workarea').value);
 		code=document.getElementById('workarea').value;
@@ -62,20 +78,24 @@ function result() {
 	var globalflag=0;
 	var a=0, b=0;
 	var strochka='';
+	
 	//while (globalflag < 1){
-	for (var i = 0; i < code.length; i++){console.log('code.charAt('+i+')='+code.charAt(i));
-		if (flag===1) {strochka=strochka+code.charAt(i);}
-		if (code.charAt(i)===')'){b=i; flag=2;}
-		if ((code.charAt(i)==='(')&&(flag===0)){a=i; flag=1;}
-		if (flag===2){flag=0; code=code.replace(('('+strochka), resultskobki(strochka,a,b)); 
+	//for (var i = 0; i < code.length; i++){console.log('code.charAt('+i+')='+code.charAt(i));
+	//	if (flag===1) {strochka=strochka+code.charAt(i);}
+	//	if (code.charAt(i)===')'){b=i; flag=2;}
+	//	if ((code.charAt(i)==='(')&&(flag===0)){a=i; flag=1;}
+	//	if (flag===2){flag=0; code=code.replace(('('+strochka), resultskobki(strochka,a,b)); 
 		//console.log('AAAAAAAAAAA! '+code+ ' '+('('+strochka)+ ' c '+ resultskobki(strochka,a,b)+' result '+ code.replace(('('+strochka), resultskobki(strochka,a,b)));
-		i=i-strochka.length;
-		a=0; b=0; strochka=''; }
+	//	i=i-strochka.length;
+	//	a=0; b=0; strochka=''; }
 	//}
-	}
-	resultat=code;
+	//}
+	resultat=findmeskobki(0,code.length,code);
 	console.log('RESULT = ' + resultat);
 }
+
+
+
 function resultskobki (skobki, startpos, stoppos) {
 	var perem='0';
 	var resultat2=0;
