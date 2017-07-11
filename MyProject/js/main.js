@@ -145,6 +145,49 @@ function umnogenie (stroka) {
 			//l=a+'*'+b;
 			stroka=stroka.replace((a+'/'+b),x);
 			flagb=0;
+			break;
+		case '√':
+			y=i;v=i;
+			flaga=0; y=i;
+			while (flaga===0){y=y+1; console.log(stroka.charAt(y)); if ((stroka.charAt(y)==='.')||(isNumber(stroka.charAt(y)))) {x=y}else{flaga=1};}
+			for (var j = i+1; j < y; j++){
+				b=b+stroka.charAt(j);
+			}
+			console.log('[Корень2]: B='+b+', after:'+stroka.charAt(y));
+			x=Math.sqrt(parseFloat(b));
+			//l=a+'*'+b;
+			stroka=stroka.replace(('√'+b),x);
+			flagb=0;
+			break;
+		case 'V':
+			y=i;v=i;
+			flaga=0; y=i;
+			while (flaga===0){y=y+1; console.log(stroka.charAt(y)); if ((stroka.charAt(y)==='.')||(isNumber(stroka.charAt(y)))) {x=y}else{flaga=1};}
+			for (var j = i+1; j < y; j++){
+				b=b+stroka.charAt(j);
+			}
+			console.log('[Корень3]: B='+b+', after:'+stroka.charAt(y));
+			x=Math.cbrt(parseFloat(b));
+			//l=a+'*'+b;
+			stroka=stroka.replace(('V'+b),x);
+			flagb=0;
+			break;
+		case '^':
+			y=i;v=i;
+			while (flaga===0){v=v-1; if ((stroka.charAt(v)==='.')||(isNumber(stroka.charAt(v)))) {x=v}else{flaga=1};}
+			for (var j = v+1; j < i; j++){
+				a=a+stroka.charAt(j);
+			}
+			flaga=0; y=i;
+			while (flaga===0){y=y+1; console.log(stroka.charAt(y)); if ((stroka.charAt(y)==='.')||(isNumber(stroka.charAt(y)))) {x=y}else{flaga=1};}
+			for (var j = i+1; j < y; j++){
+				b=b+stroka.charAt(j);
+			}
+			console.log('[Степень]: A='+a+', B='+b+', before:'+stroka.charAt(v)+', after:'+stroka.charAt(y));
+			x=Math.pow(a,b);
+			//l=a+'*'+b;
+			stroka=stroka.replace((a+'^'+b),x);
+			flagb=0;
 			break;	
 		}//+a*b+c
 	}
@@ -153,7 +196,18 @@ function umnogenie (stroka) {
 	return stroka;
 }
 
+function backspace(){
+	document.getElementById('workarea').value=document.getElementById('workarea').value.substring(0, document.getElementById('workarea').value.length-1);
+}
 
+function param_save(){
+	global_param=document.getElementById('workarea').value;
+}
+
+function param_get(){
+	document.getElementById('workarea').value=document.getElementById('workarea').value+global_param;
+}
+var global_param;
 function resultskobki (skobki, startpos, stoppos) {
 	var perem='0';
 	var resultat2=0;

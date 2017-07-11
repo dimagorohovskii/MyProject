@@ -113,10 +113,10 @@ a.button29:active {
 				<tr>
 					<td><a href="#" class="button29" onclick="cleararea()">C</a></td>
 					<td><a href="#" class="button29" onclick="result()">=</a></td>
-					<td><a href="#" class="button29">M</a></td>
-					<td><a href="#" class="button29">&lArr;</a></td>
-					<td><a href="#" class="button29">&nbsp;X&nbsp;</a></td>
-					<td><a href="#" class="button29">&nbsp;N&nbsp;</a></td>
+					<td><a href="#" class="button29" onclick="param_get()">M</a></td>
+					<td><a href="#" class="button29" onclick="backspace()">&lArr;</a></td>
+					<td><a href="#" class="button29" onclick="param_save()">&nbsp;X&nbsp;</a></td>
+					<td><a href="#" class="button29" onclick="addnum('V','com')">&nbsp;V&nbsp;</a></td>
 				</tr>
 				<tr>
 					<td><a href="#" class="button28" onclick="addnum(7,'num')">7</a></td>
@@ -132,13 +132,13 @@ a.button29:active {
 					<td><a href="#" class="button28" onclick="addnum(6,'num')">6&nbsp;</a></td>
 					<td><a href="#" class="button29" onclick="addnum('/','com')">÷&nbsp;</a></td>
 					<td><a href="#" class="button29">|&nbsp;&nbsp;|</a></td>
-					<td><a href="#" class="button29">^&nbsp;&nbsp;</a></td>
+					<td><a href="#" class="button29" onclick="addnum('^(','com')">&nbsp;^&nbsp;</a></td>
 				</tr>
 				<tr>
 					<td><a href="#" class="button28" onclick="addnum(1,'num')">1</a></td>
 					<td><a href="#" class="button28" onclick="addnum(2,'num')">2</a></td>
 					<td><a href="#" class="button28" onclick="addnum(3,'num')">3&nbsp;</a></td>
-					<td><a href="#" class="button29">√&nbsp;</a></td>
+					<td><a href="#" class="button29" onclick="addnum('√','com')">√&nbsp;</a></td>
 					<td><a href="#" class="button29" onclick="addnum('%','com')">%</a></td>
 					<td><a href="#" class="button29" onclick="addnum('!','com')">&nbsp;!&nbsp;</a></td>
 				</tr>
