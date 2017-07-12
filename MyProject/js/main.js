@@ -24,7 +24,7 @@ function isNumber(n) {
 	}
 
 function addnum(x,typing) {
-	//console.log('TESTING: umnogenie(35+74*10-9*2*2)): ');
+	//console.log('TESTING: gsefsseegs: a:'+'gsefsseegs'.indexOf('a')+', g:'+'gsefsseegs'.indexOf('g')+', s:'+'gsefsseegs'.indexOf('s')+', S:'+'gsefsseegs'.indexOf('S'));
 	//umnogenie('35+74*10-9*2*2)');
 	switch(typing) {
 	case 'com':
@@ -49,7 +49,7 @@ function cleararea() {
 function skobka() {
 	var z;
 	if (document.getElementById('workarea').value==='0') {document.getElementById('workarea').value=''; z='(';}else{
-		if (document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1)===')'){z=')'}else
+		if ((document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1)===')')||(document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1)==='A')||(document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1)==='B')||(document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1)==='C')||(document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1)==='D')||(document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1)==='E')||(document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1)==='F')){z=')'}else
 			{z = (isNumber(document.getElementById('workarea').value.charAt(document.getElementById('workarea').value.length-1))) ? ')' : '(';}
 	}
 	code=code+'|'+z;
@@ -172,7 +172,7 @@ function umnogenie (stroka) {
 			stroka=stroka.replace(('V'+b),x);
 			flagb=0;
 			break;
-		case '^':
+		case '^':////////////////////////////////////////////////////
 			y=i;v=i;
 			while (flaga===0){v=v-1; if ((stroka.charAt(v)==='.')||(isNumber(stroka.charAt(v)))) {x=v}else{flaga=1};}
 			for (var j = v+1; j < i; j++){
@@ -258,6 +258,34 @@ function resultskobki (skobki, startpos, stoppos) {
 	}
 	return resultat2;
 }
+var funcname2, funcnames2, descr2, func2;
+function adding (){
+	var funcname2='', funcnames2='', descr2='';
+	funcname2 = prompt("Enter function name","New function");
+	if (funcname2===null) {alert('Name cant be null')}else{
+		funcnames2 = prompt("Enter function designation","NFUNC");
+		if (funcnames2===null) {alert('Designation cant be null')}else{
+			descr2 = prompt("Enter function description","My first function");
+			if (descr2===null) {alert('Description cant be null')}else{
+				var tempdata='';
+				var tempdata2=document.getElementById('workarea').value;
+				var stupidflag=0;
+				funcnames2='&'+funcnames2+'[';
+				if (!(tempdata2.indexOf('A')===-1)){funcnames2=funcnames+'A'}else{stupidflag=1};
+				if (!(tempdata2.indexOf('B')===-1)){if (stupidflag===0) {funcnames2=funcnames2+',B'}else{funcnames2=funcnames2+'B'; stupidflag=0;}};
+				if (!(tempdata2.indexOf('C')===-1)){if (stupidflag===0) {funcnames2=funcnames2+',C'}else{funcnames2=funcnames2+'C'; stupidflag=0;}};
+				if (!(tempdata2.indexOf('D')===-1)){if (stupidflag===0) {funcnames2=funcnames2+',D'}else{funcnames2=funcnames2+'D'; stupidflag=0;}};
+				if (!(tempdata2.indexOf('E')===-1)){if (stupidflag===0) {funcnames2=funcnames2+',E'}else{funcnames2=funcnames2+'E'; stupidflag=0;}};
+				if (!(tempdata2.indexOf('F')===-1)){if (stupidflag===0) {funcnames2=funcnames2+',F'}else{funcnames2=funcnames2+'F'; stupidflag=0;}};
+				funcnames2=funcnames2+']';
+				setData({funcname:funcname2,funcnames:funcnames2,descr:descr2,functext:tempdata2});
+				
+				
+				
+			}
+		}
+	}
+}
 
 function againfunc(command,a,b) {
 	var resultat007=0;
@@ -272,4 +300,60 @@ function againfunc(command,a,b) {
 	}
 	console.log('RESULTAT007 = '+resultat007);
 	return resultat007;
+}
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+window.onload = function () {
+	
+	//var indicator = document.getElementById("indicator");
+	//indicator.style.visibility = "hidden";
+	
+
+};
+
+
+var indexedDB 	  = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB,
+IDBTransaction  = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction,
+baseName 	  = "functions",
+storeName 	  = "functions";
+//const dbName = "functions";
+//var request = indexedDB.open(dbName);
+function setData(obj){
+	connectDB(function(db){
+		//console.log('Recording: '+obj);
+		var request = db.transaction([storeName], "readwrite").objectStore(storeName).add(obj);
+		request.onerror = logerr;
+		request.onsuccess = function(){
+			return request.result;
+		}
+	});
+}
+
+function connectDB(f){
+	var request = indexedDB.open(baseName, 1);
+	request.onerror = logerr;
+	request.onsuccess = function(){
+		f(request.result);
+	}
+	request.onupgradeneeded = function(e){
+		var objectStore = e.currentTarget.result.createObjectStore(storeName, { autoIncrement: true });
+		connectDB(f);
+	}
+}
+
+function logerr(err){
+	console.log(err);
 }
