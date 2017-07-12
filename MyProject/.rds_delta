@@ -1,9 +1,6 @@
 #delete
 #add
-res/wgt/js/jquery-2.0.0.js
-res/wgt/js/jquery-2.0.0.min.js
-res/wgt/js/jquery.mobile-1.4.5.min.js
 #modify
 res/wgt/author-signature.xml
 res/wgt/signature1.xml
-res/wgt/index.html
+res/wgt/js/main.js

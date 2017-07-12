@@ -23,7 +23,7 @@ function isNumber(n) {
 	  return !isNaN(parseFloat(n)) && isFinite(n);
 	}
 
-function addnum(x,typing) {
+function addnum(x,typing) {findfunctions(0,document.getElementById('workarea').value.length,document.getElementById('workarea').value);
 	//console.log('TESTING: gsefsseegs: a:'+'gsefsseegs'.indexOf('a')+', g:'+'gsefsseegs'.indexOf('g')+', s:'+'gsefsseegs'.indexOf('s')+', S:'+'gsefsseegs'.indexOf('S'));
 	//umnogenie('35+74*10-9*2*2)');
 	switch(typing) {
@@ -312,14 +312,58 @@ function aaaaaaaaa() {
 	reading ();
 }
 
+function findfunctions(x,y,z) {
+	var tempcom='', superflag;
+	for (var i = x; i < y; i++) {console.log('findfunctions');
+		tempcom=''; superflag=0;
+		if (z.charAt(i)==='&'){
+			while((!(z.charAt(i-1)===']'))){
+				tempcom+=z.charAt(i);
+				i+=1;
+				console.log('findfunctions-while: i='+i+', y='+y+', z.charAt(i-1)='+z.charAt(i-1));
+				
+				if (i>y) {superflag=1; break}
+				
+			}
+			if (superflag===0){finding(tempcom, function(aaa){//console.log('FUNCTION FOUND: '+tempcom+', command: '+aaa);	
+					replacingcommand(tempcom,aaa);
+			});};
+			
+		}
+	}
+}
 
-
+function replacingcommand(a,b){
+	document.getElementById('workarea').value=document.getElementById('workarea').value.replace(a,b);
+}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
+function finding(word,callback){var resa='';
+	getStorage(function(res){
+    	for(var field in res) {console.log('finding-for1');
+    		for ( fieldValue in (value = res[ field ]) ){console.log('finding-for2');
+    		
+    			switch (fieldValue) {
+    			  case 'funcname':
+    				  var funcname = value[fieldValue];
+    			  case 'funcnames':
+    				  var funcnames = value[fieldValue];
+    			  case 'descr':
+    				  var descr = value[fieldValue];
+    			  case 'functext':
+    				  var functext = value[fieldValue];
+    			}
+    		}
+    		
+    //	$("#rssContent").append("key: " + field + "<br> значение: " + value[fieldValue] + "<br><br>-------------<br>");
+    		console.log('scanning... '+funcnames+' and '+word+', command: '+functext);
+    		if (word===funcnames){console.log('FOUND: '+funcnames); resa=functext};        
+    	}
+    	console.log('resa='+resa);	callback(resa);});
+	
+}
 
 
 window.onload = function () {
@@ -382,7 +426,7 @@ function reading (){
     		}
     		
     //	$("#rssContent").append("key: " + field + "<br> значение: " + value[fieldValue] + "<br><br>-------------<br>");
-		        $("#functionsList").append('<b>'+funcname+'</b>   <a href="#" onclick=alert("'+descr+'")>Info</a>     <a href="#one" onclick=addfunc("'+funcnames+'")>Select</a>   <a href="#" onclick=alert("'+descr+'")>Delete</a><br>');
+		        $("#functionsList").append('<b>'+funcname+'</b>   <a href="#" onclick=alert("'+descr+'")>Info</a>     <a href="#one" onclick=addfunc("'+funcnames+'")>Select</a>   <a href="#" onclick=del("'+funcname+'")>Delete</a><br>');
     		}
     		})
 }
@@ -412,4 +456,22 @@ function getStorage(f){
 				}
 			};
 	});
+}
+
+function delData(key){
+	connectDB(function(db){
+		var request = db.transaction([storeName], "readwrite").objectStore(storeName).delete(key);
+		request.onerror = logerr;
+		request.onsuccess = function(){
+			//console.log("File delete from DB:", file);
+		}
+	});
+}
+
+function del(key2){
+	//delData(key2);
+	connectDB(function(db){
+	var request = db.transaction([storeName], "readwrite").objectStore(storeName).delete("444-44-4444");
+	});
+	aaaaaaaaa();
 }
