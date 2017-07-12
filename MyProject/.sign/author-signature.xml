@@ -16,15 +16,11 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>1YemSxWPMORwxCIDhnnDy/A0XXFdYClMBGvHF3qhlhU=</DigestValue>
+<DigestValue>U5QikR4P9rvRrGgH0dTFf5NyjtQXNrEpT8urTvlmwDM=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>HMQ7xwDAutdw55HukTUV7XFdxVm8I3LzqsVgjxChAE8=</DigestValue>
-</Reference>
-<Reference URI="js%2Frss_db.js">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>atfd4LnCLqtHATYIvi3QAR5N9XSQS5H7Z1fEFa/5QNc=</DigestValue>
+<DigestValue>wQHWAZRtFVyM2+EQMY2KepNsedOKGKGnUB2Y5B/9Mds=</DigestValue>
 </Reference>
 <Reference URI="lib%2Fjquery.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -740,7 +736,7 @@
 </Reference>
 <Reference URI="lib%2Ftau%2Fmobile%2Ftheme%2Fdefault%2Ftau.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>m6dXrDPoSF2n45GwDdS0dXZYE+7VB7dzqnsTZLknj64=</DigestValue>
+<DigestValue>I+T49DqBDlLGln3lFhfxptwAL6hoDfFSupw0XXgocfM=</DigestValue>
 </Reference>
 <Reference URI="lib%2Ftau%2Fmobile%2Ftheme%2Fdefault%2Ftau.min.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -787,11 +783,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-dqa63AOdnzqluyq2WRgBXFYrckE7MX1QhDMSME8nM34hML7OwMBECnQWfHQgTFnOkNiFMd8Z/L7Y
-mqPH+pWC328O8XF4otrf4CftPIl3DYDAWJv6uwCm00cTIDUT6mn1PBqBE6xeE+3ZBL5ukZVVzJ0q
-D8Pcarg0lucO9UVDbOjFf0NjS51iNTYRfi5zluVdXQF5yZngA/VajNKWPKsTHFnltO+gyswkI92M
-QdVU4uYK/39udR6J5+yEjo316AuKLKpjXV8i4kVAXlpOR6NvsxerhRANRELnagMuAabG/SRNd98X
-f4FIDXat56rLSyLhdBWcxhDm7hpVsn5VN+FixA==
+hjPZBFZ4U5UoDZmDltY/dJcuL9Sazzdy7bvjDbIG4yG79p4SuFxlxmzp5WJWrLZrEiVwMGdgDJsz
+7nPPIiylysvOx3F+VKgC/ppUkt/BpzCT+mDOZDqAQQVVA3IzuZo/pxs+Zk/2CZL+7EjvSOvfuma7
+wXsvylcqm0h1fay3R4nA73YU/reNrnyBVJBi/WMWVBYGOGltUTQs9Y6YLu9viWOMWOZSITiFr6/t
+I+q0+n+iYBC3LPHA720SgF4PmPe2OSR1fv40gDVATkradnc+47q9CDNEkpu2MWozHiHhNh4+Hx69
+czQxdHUJIdHCMvNO8ohhflP3GYGe97kdcpLB+Q==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

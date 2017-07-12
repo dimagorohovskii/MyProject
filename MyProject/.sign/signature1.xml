@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>ZELyjmHjFIxw1Ai3d9TjfNzh6GGvIExVwmK4COLTn90=</DigestValue>
+<DigestValue>TIKFQN6ZeHDtGDEQeTPTBGxXyNjmkVofdWqigWZQBuk=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -20,15 +20,11 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>1YemSxWPMORwxCIDhnnDy/A0XXFdYClMBGvHF3qhlhU=</DigestValue>
+<DigestValue>U5QikR4P9rvRrGgH0dTFf5NyjtQXNrEpT8urTvlmwDM=</DigestValue>
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>HMQ7xwDAutdw55HukTUV7XFdxVm8I3LzqsVgjxChAE8=</DigestValue>
-</Reference>
-<Reference URI="js%2Frss_db.js">
-<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>atfd4LnCLqtHATYIvi3QAR5N9XSQS5H7Z1fEFa/5QNc=</DigestValue>
+<DigestValue>wQHWAZRtFVyM2+EQMY2KepNsedOKGKGnUB2Y5B/9Mds=</DigestValue>
 </Reference>
 <Reference URI="lib%2Fjquery.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -744,7 +740,7 @@
 </Reference>
 <Reference URI="lib%2Ftau%2Fmobile%2Ftheme%2Fdefault%2Ftau.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>m6dXrDPoSF2n45GwDdS0dXZYE+7VB7dzqnsTZLknj64=</DigestValue>
+<DigestValue>I+T49DqBDlLGln3lFhfxptwAL6hoDfFSupw0XXgocfM=</DigestValue>
 </Reference>
 <Reference URI="lib%2Ftau%2Fmobile%2Ftheme%2Fdefault%2Ftau.min.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -791,11 +787,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-Vp5RXhEZWLvbdAK77LHo9+LG6gbcjDas3+RVVOR3QEtZvNDPQKPY0dgpt+g2C3D5QIsFFvF+Uw2y
-mvsb20bYZ/ukI7dUSgelH9W8nPdc1Sj1N9TyGle08Pk+BOHSplwHaGwGxr/2KrZVJcl9Ct6gqQvO
-rQqSOUBDacbRBgGm4EKa3ErYkHmN5V7GRo+pQEpbbACJUBoLZanQG1ZvjvAGGJTgHE+xivYA/0bq
-xq7dw7XEv3oD5yZqkRDvCSGGSBuk6MExJE+0zgq6zt/3Lwmo5io7G4lsZWwKn/PYyNxTt8i2ZSi4
-gZNU8fAoM+kmUwifWhWUk6bR+sAf8LcFLMWH5A==
+nG4IO61XFpuHTIWHlGqZ1F5dPggj3RKi7g5wljKerTcdYaD2FD56KsMNOxdwiEiGbl3DpmF+JeUa
+1p1SazNyqP4V8o9Ohea3J9IQVJVDVw3ej4D8H0Jt3DwrHJy6a85qZvv9kWAyCE9bDMxH51OaMAGC
+uHd264Wtg99r6xdZ4BKiztvPwlJ6mKzJQ0O2V062MH2Q7J4mJ9rYPerAJ0zzDsTRtuBY6H2LipTA
+w/VE8IM+uhZu1ksSJHH5DdNvFmiZRE8DC7/3Bt5R6sQnQALYl4AQslr+dBNWHHBV0tNkLqdZU/RY
+kCXmH+dJ3mB50pNbECY8rrnTE+kefeVJMD+50A==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

@@ -90,7 +90,9 @@ a.button29:active {
    0 1px 1px rgba(255,255,255,.1);
 }
 
-
+.prokrutka {
+overflow: auto; /* свойство для прокрутки по горизонтали. Автоматом, если содержимое больше блока */
+}
 </style>
 
 <head>
@@ -100,7 +102,7 @@ a.button29:active {
 	<title>Tizen Web IDE - Template - Tizen - Tizen Web UI Framework - Multi Page</title>
 </head>
 
-<body>
+<body scroll="no">
 	<!-- Start of first page: #one -->
 	<div class="ui-page" id="one">
 
@@ -162,16 +164,17 @@ a.button29:active {
 
 
 			
-				<div class="niz"><center><a href="#" class="button28" onclick="adding ()">New function</a>&nbsp;&nbsp;<a href="#popup" data-rel="popup" data-position-to="window" class="button28">User's functions</a></center>
+				<div class="niz"><center><a href="#" class="button28" onclick="adding ()">New function</a>&nbsp;&nbsp;<a href="#two" class="button28" onclick="aaaaaaaaa ()">User's functions</a></center>
 				 </div>
 			</div>
 		
 	
 			<div id="popup" class="ui-popup center_title_1btn">
-				<div class="ui-popup-header">Popup title</div>
-				<div class="ui-popup-content popup-content-padding">Pop-up dialog box, a child window that blocks user interact to the parent windows</div>
+				<div class="ui-popup-header">User's functions list</div>
+				<div class="ui-popup-content popup-content-padding"><p></p></div>
+				<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 				<div class="ui-popup-footer">
-					<a class="ui-btn ui-inline" data-rel="back">Button</a>
+					<a class="ui-btn ui-inline" data-rel="back">Cancel</a>
 		</div>
 			</div>
 		</div><!-- /content -->
@@ -181,14 +184,12 @@ a.button29:active {
 	<!-- Start of second page: #two -->
 	<div class="ui-page" id="two">
 		<div class="ui-header">
-			<h1>Two</h1>
+			<h1>User's functions</h1>
 		</div><!-- /header -->
 
 		<div class="ui-content">
-			<h2>Two</h2>
-			<p>I have an id of "two" on my page container. I'm the second
-				page container in this multi-page template.</p>
-			<p><a href="#one" class="ui-btn ui-inline">Back to page "one"</a></p>
+			<table class="table"><div id="functionsList" class="prokrutka"></div></table>
+			<p><a href="#one" class="ui-btn ui-inline">Cancel</a></p>
 		</div><!-- /content -->
 	</div><!-- /page two -->
 

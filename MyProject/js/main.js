@@ -304,7 +304,12 @@ function againfunc(command,a,b) {
 
 
 
-
+function aaaaaaaaa() {
+	document.getElementById("functionsList").innerHTML='';
+		for (var i = 0; i < 10; i++) {document.getElementById("functionsList").innerHTML+='<b>Searching</b>   <a href="#" onclick=alert("Info")>Info</a>     <a href="#one" onclick=alert("select")>Select</a><br>'
+			
+		}
+}
 
 
 
