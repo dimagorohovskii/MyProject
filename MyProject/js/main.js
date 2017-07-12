@@ -334,15 +334,70 @@ function findfunctions(x,y,z) {
 }
 
 function replacingcommand(a,b){
+	var A='',B='',C='',D='',E='',F='',J='',flagus=0;
+	alert('a='+a+', b='+b+', globalfunc='+globalfunc);
+	for (var i = 0; i < globalfunc.length; i++) {alert('char='+globalfunc.charAt(i)+', flag='+flagus);
+		if (flagus===1){
+			switch (globalfunc.charAt(i)){
+			 	case 'A': 
+			 		while ((!(globalfunc.charAt(i-1)===','))&&(!(globalfunc.charAt(i-1)===']'))){console.log(globalfunc.charAt(i));
+			 			i+=1;
+			 			alert('Char A='+globalfunc.charAt(i-1)+', i='+i);
+			 			A+=globalfunc.charAt(i-1);
+			 		}
+			 	break;
+			 	case 'B': 
+			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){
+			 			B+=globalfunc.charAt(i);
+			 			i+=1;
+			 		}
+			 	break;
+			 	case 'C': 
+			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){
+			 			C+=globalfunc.charAt(i);
+			 			i+=1;
+			 		}
+			 	break;
+			 	case 'D': 
+			 		while ((!(globalfunc.charAt(i-1)===','))&&(!(globalfunc.charAt(i-1)===']'))){
+			 			D+=globalfunc.charAt(i);
+			 			i+=1;
+			 			console.log('i='+i+', length='+globalfunc.length);
+			 			alert('Char D='+globalfunc.charAt(i)+', i='+i);
+			 		}
+			 	break;
+			 	case 'E': 
+			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){
+			 			E+=globalfunc.charAt(i);
+			 			i+=1;
+			 		}
+			 	break;
+			 	case 'F': 
+			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){
+			 			F+=globalfunc.charAt(i);
+			 			i+=1;
+			 		}
+			 	break;
+			}
+			}else{if(globalfunc.charAt(i)==='['){flagus=1}}
+	}
+	var str='PEREM: ';
+	if (!(A==='')){str+='A='+A+', '};
+	if (!(B==='')){str+='B='+B+', '};
+	if (!(C==='')){str+='C='+C+', '};
+	if (!(D==='')){str+='D='+D+', '};
+	if (!(E==='')){str+='E='+E+', '};
+	if (!(F==='')){str+='F='+F};
+	alert(str);
 	document.getElementById('workarea').value=document.getElementById('workarea').value.replace(a,b);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+var globalcom='';
 
 function finding(word,callback){var resa='';
 	getStorage(function(res){
-    	for(var field in res) {console.log('finding-for1');
+    	for(var field in res) {//console.log('finding-for1');
     		for ( fieldValue in (value = res[ field ]) ){console.log('finding-for2');
     		
     			switch (fieldValue) {
@@ -359,9 +414,9 @@ function finding(word,callback){var resa='';
     		
     //	$("#rssContent").append("key: " + field + "<br> значение: " + value[fieldValue] + "<br><br>-------------<br>");
     		console.log('scanning... '+funcnames+' and '+word+', command: '+functext);
-    		if (word===funcnames){console.log('FOUND: '+funcnames); resa=functext};        
+    		if (globalfunc===funcnames){console.log('FOUND: '+funcnames); resa=functext};        
     	}
-    	console.log('resa='+resa);	callback(resa);});
+    	console.log('resa='+resa); if (!(resa==='')) {globalcom=resa;};	callback(resa);});
 	
 }
 
@@ -432,9 +487,10 @@ function reading (){
 }
 
 function addfunc(str){
+	globalfunc=str;
 	document.getElementById('workarea').value+=str;
 }
-
+var globalfunc='';
 function getStorage(f){
 	connectDB(function(db){
 		var rows = [],
