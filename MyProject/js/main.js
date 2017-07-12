@@ -271,7 +271,7 @@ function adding (){
 				var tempdata2=document.getElementById('workarea').value;
 				var stupidflag=0;
 				funcnames2='&'+funcnames2+'[';
-				if (!(tempdata2.indexOf('A')===-1)){funcnames2=funcnames+'A'}else{stupidflag=1};
+				if (!(tempdata2.indexOf('A')===-1)){funcnames2=funcnames2+'A'}else{stupidflag=1};
 				if (!(tempdata2.indexOf('B')===-1)){if (stupidflag===0) {funcnames2=funcnames2+',B'}else{funcnames2=funcnames2+'B'; stupidflag=0;}};
 				if (!(tempdata2.indexOf('C')===-1)){if (stupidflag===0) {funcnames2=funcnames2+',C'}else{funcnames2=funcnames2+'C'; stupidflag=0;}};
 				if (!(tempdata2.indexOf('D')===-1)){if (stupidflag===0) {funcnames2=funcnames2+',D'}else{funcnames2=funcnames2+'D'; stupidflag=0;}};
@@ -306,9 +306,10 @@ function againfunc(command,a,b) {
 
 function aaaaaaaaa() {
 	document.getElementById("functionsList").innerHTML='';
-		for (var i = 0; i < 10; i++) {document.getElementById("functionsList").innerHTML+='<b>Searching</b>   <a href="#" onclick=alert("Info")>Info</a>     <a href="#one" onclick=alert("select")>Select</a><br>'
-			
-		}
+		//for (var i = 0; i < 10; i++) {document.getElementById("functionsList").innerHTML+='<b>Searching</b>   <a href="#" onclick=alert("Info")>Info</a>     <a href="#one" onclick=alert("select")>Select</a><br>'
+		//	
+		//}
+	reading ();
 }
 
 
@@ -361,4 +362,54 @@ function connectDB(f){
 
 function logerr(err){
 	console.log(err);
+}
+
+function reading (){
+	getStorage(function(res){
+    	for(var field in res) {
+    		for ( fieldValue in (value = res[ field ]) ){
+    		
+    			switch (fieldValue) {
+    			  case 'funcname':
+    				  var funcname = value[fieldValue];
+    			  case 'funcnames':
+    				  var funcnames = value[fieldValue];
+    			  case 'descr':
+    				  var descr = value[fieldValue];
+    			  case 'functext':
+    				  var functext = value[fieldValue];
+    			}
+    		}
+    		
+    //	$("#rssContent").append("key: " + field + "<br> значение: " + value[fieldValue] + "<br><br>-------------<br>");
+		        $("#functionsList").append('<b>'+funcname+'</b>   <a href="#" onclick=alert("'+descr+'")>Info</a>     <a href="#one" onclick=addfunc("'+funcnames+'")>Select</a>   <a href="#" onclick=alert("'+descr+'")>Delete</a><br>');
+    		}
+    		})
+}
+
+function addfunc(str){
+	document.getElementById('workarea').value+=str;
+}
+
+function getStorage(f){
+	connectDB(function(db){
+		var rows = [],
+			store = db.transaction([storeName], "readonly").objectStore(storeName);
+
+		if(store.mozGetAll)
+			store.mozGetAll().onsuccess = function(e){
+				f(e.target.result);
+			};
+		else
+			store.openCursor().onsuccess = function(e) {
+				var cursor = e.target.result;
+				if(cursor){
+					rows.push(cursor.value);
+					cursor.continue();
+				}
+				else {
+					f(rows);
+				}
+			};
+	});
 }
