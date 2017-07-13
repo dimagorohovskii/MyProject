@@ -336,14 +336,14 @@ function findfunctions(x,y,z) {
 function replacingcommand(a,b){
 	var A='',B='',C='',D='',E='',F='',J='',flagus=0;
 	alert('a='+a+', b='+b+', globalfunc='+globalfunc);
-	for (var i = 0; i < globalfunc.length; i++) {alert('char='+globalfunc.charAt(i)+', flag='+flagus);
+	for (var i = 0; i < globalfunc.length; i++) {alert('char('+i+')='+globalfunc.charAt(i)+', flag='+flagus);
 		if (flagus===1){
 			switch (globalfunc.charAt(i)){
-			 	case 'A': 
-			 		while ((!(globalfunc.charAt(i-1)===','))&&(!(globalfunc.charAt(i-1)===']'))){console.log(globalfunc.charAt(i));
+			 	case 'A':
+			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){console.log(globalfunc.charAt(i));
+			 			//alert('Char A('+(i)+')='+globalfunc.charAt(i)+', i='+i);
+			 			A+=globalfunc.charAt(i);
 			 			i+=1;
-			 			alert('Char A='+globalfunc.charAt(i-1)+', i='+i);
-			 			A+=globalfunc.charAt(i-1);
 			 		}
 			 	break;
 			 	case 'B': 
@@ -359,11 +359,10 @@ function replacingcommand(a,b){
 			 		}
 			 	break;
 			 	case 'D': 
-			 		while ((!(globalfunc.charAt(i-1)===','))&&(!(globalfunc.charAt(i-1)===']'))){
+			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){
 			 			D+=globalfunc.charAt(i);
+			 			//alert('Char D='+globalfunc.charAt(i)+', i='+i);
 			 			i+=1;
-			 			console.log('i='+i+', length='+globalfunc.length);
-			 			alert('Char D='+globalfunc.charAt(i)+', i='+i);
 			 		}
 			 	break;
 			 	case 'E': 
