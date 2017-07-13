@@ -74,6 +74,7 @@ function findmeskobki(start,stop,stroka) {
 }
 
 function result() {
+	findfunctions(0,document.getElementById('workarea').value.length,document.getElementById('workarea').value);
 		console.log(document.getElementById('workarea').value);
 		code=document.getElementById('workarea').value;
 	var resultat=0;
@@ -334,48 +335,60 @@ function findfunctions(x,y,z) {
 }
 
 function replacingcommand(a,b){
-	var A='',B='',C='',D='',E='',F='',J='',flagus=0;
-	alert('a='+a+', b='+b+', globalfunc='+globalfunc);
-	for (var i = 0; i < globalfunc.length; i++) {alert('char('+i+')='+globalfunc.charAt(i)+', flag='+flagus);
+	var A='',B='',C='',D='',E='',F='',J='',flagus=0,j=0;
+	//alert('a='+a+', b='+b+', globalfunc='+globalfunc);
+	for (var i = 0; i < globalfunc.length; i++) {//alert('char('+i+')='+globalfunc.charAt(i)+', flag='+flagus);
 		if (flagus===1){
 			switch (globalfunc.charAt(i)){
 			 	case 'A':
-			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){console.log(globalfunc.charAt(i));
+			 		j=i;
+			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){console.log(globalfunc.charAt(i));
 			 			//alert('Char A('+(i)+')='+globalfunc.charAt(i)+', i='+i);
-			 			A+=globalfunc.charAt(i);
-			 			i+=1;
+			 			A+=a.charAt(j);
+			 			j+=1;
 			 		}
+			 		i+=1;
 			 	break;
 			 	case 'B': 
-			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){
-			 			B+=globalfunc.charAt(i);
-			 			i+=1;
+			 		j=i;
+			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){
+			 			B+=a.charAt(j);
+			 			j+=1;
 			 		}
+			 		i+=1;
 			 	break;
 			 	case 'C': 
-			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){
-			 			C+=globalfunc.charAt(i);
-			 			i+=1;
+			 		j=i;
+			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){
+			 			C+=a.charAt(j);
+			 			j+=1;
 			 		}
+			 		i+=1;
 			 	break;
 			 	case 'D': 
-			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){
-			 			D+=globalfunc.charAt(i);
+			 		j=i;
+			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){
+			 			D+=a.charAt(j);
 			 			//alert('Char D='+globalfunc.charAt(i)+', i='+i);
-			 			i+=1;
+			 			j+=1;
 			 		}
+			 		i+=1;
 			 	break;
 			 	case 'E': 
-			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){
-			 			E+=globalfunc.charAt(i);
-			 			i+=1;
+			 		j=i;
+			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){
+			 			E+=a.charAt(j);
+			 			j+=1;
 			 		}
+			 		i+=1;
 			 	break;
 			 	case 'F': 
-			 		while ((!(globalfunc.charAt(i)===','))&&(!(globalfunc.charAt(i)===']'))){
-			 			F+=globalfunc.charAt(i);
-			 			i+=1;
+			 		j=i;
+			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){
+			 			F+=a.charAt(j);
+			 			j+=1;
 			 		}
+			 		i+=1;
 			 	break;
 			}
 			}else{if(globalfunc.charAt(i)==='['){flagus=1}}
@@ -386,9 +399,26 @@ function replacingcommand(a,b){
 	if (!(C==='')){str+='C='+C+', '};
 	if (!(D==='')){str+='D='+D+', '};
 	if (!(E==='')){str+='E='+E+', '};
-	if (!(F==='')){str+='F='+F};
+	if (!(F==='')){str+='F='+F+', '};
+	str+='a='+a+', '; str+='b='+b+', globalfunc='+globalfunc+'. ';
 	alert(str);
+	if (!(A==='')){b=replacingargs('A',A,b);};
+	if (!(B==='')){b=replacingargs('B',B,b);};
+	if (!(C==='')){b=replacingargs('C',C,b);};
+	if (!(D==='')){b=replacingargs('D',D,b);};
+	if (!(E==='')){b=replacingargs('E',E,b);};
+	if (!(F==='')){b=replacingargs('F',F,b);};
 	document.getElementById('workarea').value=document.getElementById('workarea').value.replace(a,b);
+}
+
+function replacingargs(a,b,c){
+	var flagi=0,etalon='';
+	while (flagi===0){
+		etalon=c;
+		c=c.replace(a,b);
+		if (c===etalon){flagi=1};
+	}
+	return c;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -487,6 +517,7 @@ function reading (){
 
 function addfunc(str){
 	globalfunc=str;
+	if (document.getElementById('workarea').value==='0'){document.getElementById('workarea').value=''};
 	document.getElementById('workarea').value+=str;
 }
 var globalfunc='';
