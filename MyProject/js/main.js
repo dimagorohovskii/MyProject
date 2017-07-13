@@ -74,7 +74,8 @@ function findmeskobki(start,stop,stroka) {
 }
 
 function result() {
-	findfunctions(0,document.getElementById('workarea').value.length,document.getElementById('workarea').value);
+	//addnum('+1','num');
+	//findfunctions(0,document.getElementById('workarea').value.length,document.getElementById('workarea').value);
 		console.log(document.getElementById('workarea').value);
 		code=document.getElementById('workarea').value;
 	var resultat=0;
@@ -106,14 +107,17 @@ function result() {
 }
 
 function umnogenie (stroka) {
-	var flaga, flagb=0,result='', x, y,v,a,b;
+	var flagumnog=2,flaga, flagb=0,result='', x, y,v,a,b;
 	while (flagb===0){
 		flagb=1;
+		console.log('[FLAGUMNOG]:'+flagumnog);
+		if (flagumnog===2) {flagumnog=1};
 	for (var i = 0; i < stroka.length; i++) {
 		flaga=0;
 		a='',b='';
 		switch (stroka.charAt(i)) {
 		case '*':
+			//if (flagumnog===0){
 			y=i;v=i;
 			while (flaga===0){v=v-1; if ((stroka.charAt(v)==='.')||(isNumber(stroka.charAt(v)))) {x=v}else{flaga=1};}
 			for (var j = v+1; j < i; j++){
@@ -125,12 +129,16 @@ function umnogenie (stroka) {
 				b=b+stroka.charAt(j);
 			}
 			console.log('[Умножение]: A='+a+', B='+b+', before:'+stroka.charAt(v)+', after:'+stroka.charAt(y));
+			console.log('[Умножение]: X='+parseFloat(a)+'*'+parseFloat(b));
 			x=parseFloat(a)*parseFloat(b);
+			console.log('[Умножение]: X='+x);
 			//l=a+'*'+b;
 			stroka=stroka.replace((a+'*'+b),x);
 			flagb=0;
+			//}
 			break;	
 		case '/':
+			//if (flagumnog===0){
 			y=i;v=i;
 			while (flaga===0){v=v-1; if ((stroka.charAt(v)==='.')||(isNumber(stroka.charAt(v)))) {x=v}else{flaga=1};}
 			for (var j = v+1; j < i; j++){
@@ -146,8 +154,10 @@ function umnogenie (stroka) {
 			//l=a+'*'+b;
 			stroka=stroka.replace((a+'/'+b),x);
 			flagb=0;
+			//}
 			break;
 		case '√':
+			flagumnog=2;
 			y=i;v=i;
 			flaga=0; y=i;
 			while (flaga===0){y=y+1; console.log(stroka.charAt(y)); if ((stroka.charAt(y)==='.')||(isNumber(stroka.charAt(y)))) {x=y}else{flaga=1};}
@@ -161,6 +171,7 @@ function umnogenie (stroka) {
 			flagb=0;
 			break;
 		case 'V':
+			flagumnog=2;
 			y=i;v=i;
 			flaga=0; y=i;
 			while (flaga===0){y=y+1; console.log(stroka.charAt(y)); if ((stroka.charAt(y)==='.')||(isNumber(stroka.charAt(y)))) {x=y}else{flaga=1};}
@@ -174,6 +185,7 @@ function umnogenie (stroka) {
 			flagb=0;
 			break;
 		case '^':////////////////////////////////////////////////////
+			flagumnog=2;
 			y=i;v=i;
 			while (flaga===0){v=v-1; if ((stroka.charAt(v)==='.')||(isNumber(stroka.charAt(v)))) {x=v}else{flaga=1};}
 			for (var j = v+1; j < i; j++){
@@ -192,6 +204,7 @@ function umnogenie (stroka) {
 			break;	
 		}//+a*b+c
 	}
+	if (flagumnog===1){flagumnog=0};
 	}
 	console.log('[Умножение]: RESULT = '+stroka);
 	return stroka;
@@ -350,7 +363,7 @@ function replacingcommand(a,b){
 			 		i+=1;
 			 	break;
 			 	case 'B': 
-			 		j=i;
+			 		if (j===0){j=i}else{j=j+1};
 			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){
 			 			B+=a.charAt(j);
 			 			j+=1;
@@ -358,7 +371,7 @@ function replacingcommand(a,b){
 			 		i+=1;
 			 	break;
 			 	case 'C': 
-			 		j=i;
+			 		if (j===0){j=i}else{j=j+1}
 			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){
 			 			C+=a.charAt(j);
 			 			j+=1;
@@ -366,7 +379,7 @@ function replacingcommand(a,b){
 			 		i+=1;
 			 	break;
 			 	case 'D': 
-			 		j=i;
+			 		if (j===0){j=i}else{j=j+1}
 			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){
 			 			D+=a.charAt(j);
 			 			//alert('Char D='+globalfunc.charAt(i)+', i='+i);
@@ -375,7 +388,7 @@ function replacingcommand(a,b){
 			 		i+=1;
 			 	break;
 			 	case 'E': 
-			 		j=i;
+			 		if (j===0){j=i}else{j=j+1}
 			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){
 			 			E+=a.charAt(j);
 			 			j+=1;
@@ -383,7 +396,7 @@ function replacingcommand(a,b){
 			 		i+=1;
 			 	break;
 			 	case 'F': 
-			 		j=i;
+			 		if (j===0){j=i}else{j=j+1}
 			 		while ((!(a.charAt(j)===','))&&(!(a.charAt(j)===']'))){
 			 			F+=a.charAt(j);
 			 			j+=1;
@@ -401,7 +414,7 @@ function replacingcommand(a,b){
 	if (!(E==='')){str+='E='+E+', '};
 	if (!(F==='')){str+='F='+F+', '};
 	str+='a='+a+', '; str+='b='+b+', globalfunc='+globalfunc+'. ';
-	alert(str);
+	//alert(str);
 	if (!(A==='')){b=replacingargs('A',A,b);};
 	if (!(B==='')){b=replacingargs('B',B,b);};
 	if (!(C==='')){b=replacingargs('C',C,b);};
@@ -510,7 +523,7 @@ function reading (){
     		}
     		
     //	$("#rssContent").append("key: " + field + "<br> значение: " + value[fieldValue] + "<br><br>-------------<br>");
-		        $("#functionsList").append('<b>'+funcname+'</b>   <a href="#" onclick=alert("'+descr+'")>Info</a>     <a href="#one" onclick=addfunc("'+funcnames+'")>Select</a>   <a href="#" onclick=del("'+funcname+'")>Delete</a><br>');
+    		     $("#functionsList").append('<b>'+funcname+'</b>   <a href="#" onclick=alert(\''+descr+'\')>Info</a>     <a href="#one" onclick=addfunc("'+funcnames+'")>Select</a>   <a href="#" onclick=del("'+funcname+'")>Delete</a><br>');
     		}
     		})
 }
