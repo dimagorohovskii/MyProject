@@ -73,7 +73,16 @@ function findmeskobki(start,stop,stroka) {
 	return stroka;
 }
 
+
+function littlehelper (callback){
+	//alert('1 '+document.getElementById('workarea').value);
+	findfunctions(0,document.getElementById('workarea').value.length,document.getElementById('workarea').value); 
+	setTimeout(function () {callback() }, 50); 
+	//alert('2'+document.getElementById('workarea').value);
+}
+
 function result() {
+	littlehelper(function(){//alert(document.getElementById('workarea').value+'(((((((');
 	//addnum('+1','num');
 	//findfunctions(0,document.getElementById('workarea').value.length,document.getElementById('workarea').value);
 		console.log(document.getElementById('workarea').value);
@@ -104,7 +113,7 @@ function result() {
 	}
 	resultat=resultskobki ((resultat+')'), 0, resultat.length);
 	document.getElementById('workarea').value=resultat;
-}
+	})}
 
 function umnogenie (stroka) {
 	var flagumnog=2,flaga, flagb=0,result='', x, y,v,a,b;
@@ -202,6 +211,38 @@ function umnogenie (stroka) {
 			stroka=stroka.replace((a+'^'+b),x);
 			flagb=0;
 			break;	
+		case '%':
+			//if (flagumnog===0){
+			y=i;v=i;
+			while (flaga===0){v=v-1; if ((stroka.charAt(v)==='.')||(isNumber(stroka.charAt(v)))) {x=v}else{flaga=1};}
+			for (var j = v+1; j < i; j++){
+				a=a+stroka.charAt(j);
+			}
+			
+			console.log('[Деление]: A='+a+', B='+b+', before:'+stroka.charAt(v)+', after:'+stroka.charAt(y));
+			//if (b==='0') {alert('На ноль делить нельзя, дурень!')} else {x=parseFloat(a)/100;}
+			//l=a+'*'+b;
+			x=parseFloat(a)/100;
+			stroka=stroka.replace((a+'%'),x);
+			flagb=0;
+			//}
+			break;
+		case '!':
+			//if (flagumnog===0){
+			y=i;v=i;
+			while (flaga===0){v=v-1; if ((stroka.charAt(v)==='.')||(isNumber(stroka.charAt(v)))) {x=v}else{flaga=1};}
+			for (var j = v+1; j < i; j++){
+				a=a+stroka.charAt(j);
+			}
+			
+			console.log('[Деление]: A='+a+', B='+b+', before:'+stroka.charAt(v)+', after:'+stroka.charAt(y));
+			//if (b==='0') {alert('На ноль делить нельзя, дурень!')} else {x=0; for (var gaa = 1; gaa < a; gaa++){x=x*gaa;}}
+			//l=a+'*'+b;
+			x=1; for (var gaa = 0; gaa < a; gaa++){x=x*(gaa+1);}
+			stroka=stroka.replace((a+'!'),x);
+			flagb=0;
+			//}
+			break;
 		}//+a*b+c
 	}
 	if (flagumnog===1){flagumnog=0};
@@ -317,6 +358,10 @@ function againfunc(command,a,b) {
 }
 
 
+function daydeneg(){
+	alert('Functions V, | |, sn, cs, lg, ∫, Σ, Z, P  will be available in the paid version of the application!');
+}
+
 
 function aaaaaaaaa() {
 	document.getElementById("functionsList").innerHTML='';
@@ -339,7 +384,7 @@ function findfunctions(x,y,z) {
 				if (i>y) {superflag=1; break}
 				
 			}
-			if (superflag===0){finding(tempcom, function(aaa){//console.log('FUNCTION FOUND: '+tempcom+', command: '+aaa);	
+			if (superflag===0){finding(tempcom, function(aaa){//alert('FUNCTION FOUND: '+tempcom+', command: '+aaa);	
 					replacingcommand(tempcom,aaa);
 			});};
 			
@@ -421,6 +466,8 @@ function replacingcommand(a,b){
 	if (!(D==='')){b=replacingargs('D',D,b);};
 	if (!(E==='')){b=replacingargs('E',E,b);};
 	if (!(F==='')){b=replacingargs('F',F,b);};
+	//alert(b);
+	//alert(document.getElementById('workarea').value);
 	document.getElementById('workarea').value=document.getElementById('workarea').value.replace(a,b);
 }
 
